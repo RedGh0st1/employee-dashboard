@@ -5,6 +5,9 @@ export default function About() {
     <div>
       <Navbar />
       <h1>About</h1>
+      <section>
+        <article></article>
+      </section>
     </div>
   )
 }
