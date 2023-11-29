@@ -38,10 +38,10 @@ export default function NewEmployeeForm() {
         </label>
 
         <label htmlFor="pic_url">
-          {" "}
           Pic Url:
           <input type="text" name="picurl" placeholder="Pic Url" />
         </label>
+
         <button type="submit">Submit</button>
       </form>
     </div>

@@ -1,4 +1,4 @@
-import React from "react"
+// import React from "react"
 import ReactDOM from "react-dom/client"
 import Home from "./Home.jsx"
 import "./index.css"
@@ -9,6 +9,7 @@ import Contact from "./Pages/Contact.jsx"
 import About from "./Pages/About.jsx"
 import NewEmployee from "./Pages/NewEmployee.jsx"
 
+// (TECHNICAL TERMS)----- client side routing and server-side routing - single page web allow navigating without refreshing the page.
 const router = createBrowserRouter([
   {
     path: "/", //What the user types in the user
