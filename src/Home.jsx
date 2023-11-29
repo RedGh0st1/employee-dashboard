@@ -32,14 +32,17 @@ function Home() {
       <h1>Employee Dashboard</h1>
       <div className="employee-container">
         {data.map((employee) => {
-          const { pic, firstName, lastName, email, company, city, skill } =
+          const { pic, firstName, lastName, email, company, city, skill, id } =
             employee
           return (
-            <div className="employee-card" key={employee.id}>
-              <img src={pic} alt="employee" />
-              <p>
-                Name: {firstName} {lastName}
-              </p>
+            <div className="employee-card" key={id}>
+              <Link to={`/employees/${employee.id}`}>
+                <img src={pic} height={100} width={100} alt="employee" />
+                <h4>
+                  Name: {firstName} {lastName}
+                </h4>
+              </Link>
+
               <p>Email: {email}</p>
               <p>Company: {company}</p>
               <p>City: {city}</p>
