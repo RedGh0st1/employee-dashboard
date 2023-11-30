@@ -8,7 +8,7 @@ import { Link } from "react-router-dom"
 function Home() {
   const [data, setData] = useState([])
   const [searchQuery, setSearchQuery] = useState("")
-  const
+  const [tags, setTags] = useState("")
   useEffect(() => {
     async function getEmployees() {
       let request = await fetch(`http://localhost:8000/employee`)
@@ -35,7 +35,13 @@ function Home() {
           setSearchQuery(e.target.value)
         }}
       />
-      <input type="text" placeholder="Search by tag" />
+      <input
+        type="text"
+        placeholder="Search by tag"
+        onChange={(e) => {
+          setTags(e.target.value)
+        }}
+      />
 
       <h1>Employee Dashboard</h1>
       <div className="employee-container">
