@@ -2,19 +2,25 @@ import { useRef } from "react"
 
 export default function NewEmployeeForm() {
   const formRef = useRef()
-  const handleSubmit = (e) => {
+
+  async function handleSubmit(e) {
     e.preventDefault()
     console.log("form submitted", formRef.current)
-   let req = await fetch(`http:localhost:8000/employee`,{
-     headers:{
+    const f = new FormData(formRef.current)
+    const data = {}
+    for (const entry of f) {
+      data[entry[0]] = entry(1)
+    }
 
-     },
-     body: new FormData(formRef.current),
-     method:'POST'
-   })
+    let req = await fetch(`http://localhost:8000/employee`, {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: JSON.stringify(data),
+      method: "POST",
+    })
     let res = await req.json()
-    console.log('res', res)
-   
+    console.log("res", res)
   }
 
   return (

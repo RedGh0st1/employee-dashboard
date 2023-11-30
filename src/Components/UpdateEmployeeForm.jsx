@@ -1,17 +1,38 @@
 // import React from "react"
+import { useRef } from "react"
+import { useParams } from "react-router-dom"
 
 export default function UpdateEmployeeForm() {
-  function handleSubmit(e) {
+  const formRef = useRef()
+  const { id } = useParams()
+
+  async function handleSubmit(e) {
     e.preventDefault()
-    console.log("Form submitted")
+    console.log("form submitted", formRef.current)
+    const f = new FormData(formRef.current)
+    const data = {}
+    for (const entry of f) {
+      data[entry[0]] = entry(1)
+    }
+
+    let req = await fetch(`http://localhost:8000/employee/${id}`, {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: JSON.stringify(data),
+      method: "PutT",
+    })
+    let res = await req.json()
+    console.log("res", res)
   }
+
   return (
     <div>
       <h1>Update Employee </h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} ref={formRef}>
         <label htmlFor="firstName">
           First Name
-          <input type="text" name="first name" placeholder="First Name" />
+          <input type="text" name="first_name" placeholder="First Name" />
           <br />
         </label>
 

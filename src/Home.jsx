@@ -7,6 +7,8 @@ import { Link } from "react-router-dom"
 //control which components
 function Home() {
   const [data, setData] = useState([])
+  const [searchQuery, setSearchQuery] = useState("")
+  const
   useEffect(() => {
     async function getEmployees() {
       let request = await fetch(`http://localhost:8000/employee`)
@@ -26,7 +28,13 @@ function Home() {
         <button>Add New Student</button>
       </Link>
 
-      <input type="text" placeholder="Search by name" />
+      <input
+        type="text"
+        placeholder="Search by name"
+        onChange={(e) => {
+          setSearchQuery(e.target.value)
+        }}
+      />
       <input type="text" placeholder="Search by tag" />
 
       <h1>Employee Dashboard</h1>
@@ -34,6 +42,13 @@ function Home() {
         {data.map((employee) => {
           const { pic, firstName, lastName, email, company, city, skill, id } =
             employee
+          const fullName = `${firstName} ${lastName}`
+          if (
+            searchQuery &&
+            !fullName.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+            return null
+
           return (
             <div className="employee-card" key={id}>
               <Link to={`/employees/${employee.id}`}>
