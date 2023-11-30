@@ -9,10 +9,10 @@ function Home() {
   const [data, setData] = useState([])
   useEffect(() => {
     async function getEmployees() {
-      let req = await fetch(`http://localhost:8000/employee`)
-      let res = await req.json()
-      console.log("response", res)
-      setData(res.employees)
+      let request = await fetch(`http://localhost:8000/employee`)
+      let response = await request.json()
+      console.log("response", response)
+      setData(response.employees)
       console.log("this is the data: ", data)
     }
     getEmployees()
