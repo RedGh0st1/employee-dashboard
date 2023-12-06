@@ -12,7 +12,7 @@ export default function UpdateEmployeeForm() {
     const f = new FormData(formRef.current)
     const data = {}
     for (const entry of f) {
-      data[entry[0]] = entry(1)
+      data[entry[0]] = entry[1]
     }
 
     let req = await fetch(`http://localhost:8000/employee/${id}`, {
@@ -20,7 +20,7 @@ export default function UpdateEmployeeForm() {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: JSON.stringify(data),
-      method: "PutT",
+      method: "PUT",
     })
     let res = await req.json()
     console.log("res", res)
