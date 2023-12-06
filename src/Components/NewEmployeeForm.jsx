@@ -1,15 +1,15 @@
-import {useRef} from "react"
+import { useRef } from "react";
 
 export default function NewEmployeeForm() {
-  const formRef = useRef()
+  const formRef = useRef();
 
   async function handleSubmit(e) {
-    e.preventDefault()
-    console.log("form submitted", formRef.current)
-    const f = new FormData(formRef.current)
-    const data = {}
+    e.preventDefault();
+    console.log("form submitted", formRef.current);
+    const f = new FormData(formRef.current);
+    const data = {};
     for (const entry of f) {
-      data[entry[0]] = entry[1]
+      data[entry[0]] = entry[1];
     }
 
     let req = await fetch(`http://localhost:8000/employee`, {
@@ -18,16 +18,16 @@ export default function NewEmployeeForm() {
       },
       body: JSON.stringify(data),
       method: "POST",
-    })
-    let res = await req.json()
-    console.log("res", res)
+    });
+    let res = await req.json();
+    console.log("res", res);
   }
 
   return (
     <div>
       <h1>Add Employee </h1>
       <form onSubmit={handleSubmit} ref={formRef}>
-        <label htmlFor="firstName">
+        <label htmlFor="first_name">
           First Name
           <input type="text" name="first_name" placeholder="First Name" />
           <br />
@@ -71,5 +71,5 @@ export default function NewEmployeeForm() {
         <button type="submit">Submit</button>
       </form>
     </div>
-  )
+  );
 }

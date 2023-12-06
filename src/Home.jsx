@@ -1,28 +1,28 @@
-import {useEffect, useState} from "react"
-import "./App.css"
-import Navbar from "./Components/Navbar"
-import {Link} from "react-router-dom"
+import { useEffect, useState } from "react";
+import "./App.css";
+import Navbar from "./Components/Navbar";
+import { Link } from "react-router-dom";
 
 //client side routing
 //control which components
 function Home() {
-  const [data, setData] = useState([])
-  const [searchQuery, setSearchQuery] = useState("")
-  const [tags, setTags] = useState("")
+  const [data, setData] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [tags, setTags] = useState("");
 
   useEffect(() => {
     async function getEmployees() {
       try {
-        let request = await fetch(`http://localhost:8000/employee`)
-        let response = await request.json()
-        setData(response.employee)
-        console.log("Updated response data:", response)
+        let request = await fetch(`http://localhost:8000/employee`);
+        let response = await request.json();
+        setData(response.employee);
+        console.log("Updated response data:", response);
       } catch (error) {
-        console.log("error", error)
+        console.log("error", error);
       }
     }
-    getEmployees()
-  }, [])
+    getEmployees();
+  }, []);
 
   return (
     <div>
@@ -36,14 +36,14 @@ function Home() {
         type="text"
         placeholder="Search by name"
         onChange={(e) => {
-          setSearchQuery(e.target.value)
+          setSearchQuery(e.target.value);
         }}
       />
       <input
         type="text"
         placeholder="Search by tag"
         onChange={(e) => {
-          setTags(e.target.value)
+          setTags(e.target.value);
         }}
       />
 
@@ -51,21 +51,29 @@ function Home() {
       <div className="employee-container">
         {data &&
           data.map((employee) => {
-            const {pic, firstName, lastName, email, company, city, skill, id} =
-              employee
-            const fullName = `${firstName} ${lastName}`
+            const {
+              pic,
+              first_name,
+              last_name,
+              email,
+              company,
+              city,
+              skill,
+              id,
+            } = employee;
+            const fullName = `${first_name} ${last_name}`;
             if (
               searchQuery &&
               !fullName.toLowerCase().includes(searchQuery.toLowerCase())
             )
-              return null
+              return null;
 
             return (
               <div className="employee-card" key={id}>
                 <Link to={`/employee/${employee.id}`}>
                   <img src={pic} height={100} width={100} alt="employee" />
                   <h4>
-                    Name: {firstName} {lastName}
+                    Name: {first_name} {last_name}
                   </h4>
                 </Link>
 
@@ -74,11 +82,11 @@ function Home() {
                 <p>City: {city}</p>
                 <p>Skill: {skill}</p>
               </div>
-            )
+            );
           })}
       </div>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
