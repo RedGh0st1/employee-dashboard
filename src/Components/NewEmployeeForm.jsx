@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import {useRef} from "react"
 
 export default function NewEmployeeForm() {
   const formRef = useRef()
@@ -33,7 +33,7 @@ export default function NewEmployeeForm() {
           <br />
         </label>
 
-        <label htmlFor="lasttName">
+        <label htmlFor="last_name">
           Last Name
           <input type="text" name="last_name" placeholder="Last Name" />
           <br />
@@ -62,9 +62,9 @@ export default function NewEmployeeForm() {
           <br />
         </label>
 
-        <label htmlFor="pic_url">
+        <label htmlFor="pic">
           Pic Url:
-          <input type="text" name="pic_url" placeholder="Pic Url" />
+          <input type="text" name="pic" placeholder="Pic Url" />
           <br />
         </label>
 

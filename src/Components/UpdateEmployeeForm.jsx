@@ -1,10 +1,10 @@
 // import React from "react"
-import { useRef } from "react"
-import { useParams } from "react-router-dom"
+import {useRef} from "react"
+import {useParams} from "react-router-dom"
 
 export default function UpdateEmployeeForm() {
   const formRef = useRef()
-  const { id } = useParams()
+  const {id} = useParams()
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -36,7 +36,7 @@ export default function UpdateEmployeeForm() {
           <br />
         </label>
 
-        <label htmlFor="lasttName">
+        <label htmlFor="last_name">
           Last Name
           <input type="text" name="last_name" placeholder="Last Name" />
           <br />
@@ -65,10 +65,10 @@ export default function UpdateEmployeeForm() {
           <br />
         </label>
 
-        <label htmlFor="pic_url">
+        <label htmlFor="pic">
           {" "}
           Pic Url:
-          <input type="text" name="picurl" placeholder="Pic Url" />
+          <input type="text" name="pic" placeholder="Pic Url" />
           <br />
         </label>
         <button type="submit">Submit</button>
