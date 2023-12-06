@@ -21,10 +21,7 @@ export default function EmployeeProfile() {
     <div>
       <Navbar />
       <h1>Employee Profile {id} </h1>
-      <img src={employee.pic} alt="employee pic" />
-      <h1>
-        {employee.first_name} {employee.last_name}
-      </h1>
+      <img src={employee.pic} height={100} width={100} alt="employee" />
       <UpdateEmployeeForm />
     </div>
   );
