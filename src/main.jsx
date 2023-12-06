@@ -2,7 +2,7 @@
 import ReactDOM from "react-dom/client"
 import Home from "./Home.jsx"
 import "./index.css"
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import EmployeesPage from "./Pages/EmployeesPage.jsx"
 import EmployeeProfile from "./Pages/EmployeeProfile.jsx"
 import Contact from "./Pages/Contact.jsx"
@@ -16,11 +16,11 @@ const router = createBrowserRouter([
     element: <Home />, //This is what we render when the path matches
   },
   {
-    path: "/employees",
+    path: "/employee",
     element: <EmployeesPage />,
   },
   {
-    path: "/employees/:id",
+    path: "/employee/:id",
     element: <EmployeeProfile />,
   },
   {

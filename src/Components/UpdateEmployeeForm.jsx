@@ -15,15 +15,15 @@ export default function UpdateEmployeeForm() {
       data[entry[0]] = entry[1]
     }
 
-    let req = await fetch(`http://localhost:8000/employee/${id}`, {
+    let request = await fetch(`http://localhost:8000/employee/${id}`, {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       body: JSON.stringify(data),
       method: "PUT",
     })
-    let res = await req.json()
-    console.log("res", res)
+    let response = await request.json()
+    console.log("response", response)
   }
 
   return (

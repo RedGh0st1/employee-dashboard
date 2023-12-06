@@ -15,8 +15,8 @@ function Home() {
       try {
         let request = await fetch(`http://localhost:8000/employee`)
         let response = await request.json()
-        setData(response.employees)
-        console.log("Updated response data:", response.employees)
+        setData(response.employee)
+        console.log("Updated response data:", response)
       } catch (error) {
         console.log("error", error)
       }
@@ -29,7 +29,7 @@ function Home() {
       <Navbar />
 
       <Link to="/new">
-        <button>Add New Student</button>
+        <button>Add New Employee</button>
       </Link>
 
       <input
@@ -62,7 +62,7 @@ function Home() {
 
             return (
               <div className="employee-card" key={id}>
-                <Link to={`/employees/${employee.id}`}>
+                <Link to={`/employee/${employee.id}`}>
                   <img src={pic} height={100} width={100} alt="employee" />
                   <h4>
                     Name: {firstName} {lastName}

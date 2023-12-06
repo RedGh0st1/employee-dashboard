@@ -1,17 +1,17 @@
-import { useParams } from "react-router-dom"
+import {useParams} from "react-router-dom"
 import Navbar from "../Components/Navbar"
-import { useEffect, useState } from "react"
+import {useEffect, useState} from "react"
 import UpdateEmployeeForm from "../Components/UpdateEmployeeForm"
 
 export default function EmployeeProfile() {
-  const { id } = useParams()
+  const {id} = useParams()
   const [employee, setEmployee] = useState()
+
   useEffect(() => {
     async function getEmployeeById() {
       let request = await fetch(`http://localhost:8000/employee/${id}`)
       let response = await request.json()
-      console.log(employee)
-
+      console.log(response)
       if (request.ok) setEmployee(response)
     }
     getEmployeeById()
