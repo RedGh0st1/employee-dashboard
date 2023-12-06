@@ -17,7 +17,7 @@ export default function UpdateEmployeeForm() {
 
     let request = await fetch(`http://localhost:8000/employee/${id}`, {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
       method: "PUT",
@@ -30,7 +30,7 @@ export default function UpdateEmployeeForm() {
     <div>
       <h1>Update Employee </h1>
       <form onSubmit={handleSubmit} ref={formRef}>
-        <label htmlFor="firstName">
+        <label htmlFor="first_name">
           First Name
           <input type="text" name="first_name" placeholder="First Name" />
           <br />

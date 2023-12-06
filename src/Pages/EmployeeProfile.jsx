@@ -5,7 +5,7 @@ import UpdateEmployeeForm from "../Components/UpdateEmployeeForm"
 
 export default function EmployeeProfile() {
   const {id} = useParams()
-  const [employee, setEmployee] = useState()
+  const [employee, setEmployee] = useState([])
 
   useEffect(() => {
     async function getEmployeeById() {
